@@ -456,10 +456,10 @@ function rotateMatrix(matrix) {
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
 function sortByAsc(arr) {
-  let result = arr;
+  const result = arr;
   for (let k = 0; k < result.length - 1; k += 1) {
     let minIndex = result[0];
-    for (let i = 1; i < result.length; i += 1) {
+    for (let i = k + 1; i < result.length; i += 1) {
       if (arr[i] < result[minIndex]) {
         minIndex = i;
       }
