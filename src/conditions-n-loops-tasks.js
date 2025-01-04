@@ -456,22 +456,25 @@ function rotateMatrix(matrix) {
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
 function sortByAsc(arr) {
-  if (arr.length <= 1) {
-    return arr;
-  }
-
+  const array = arr;
+  if (arr.length <= 1) return arr;
   const pivot = arr[0];
-  const leftArr = [];
-  const rightArr = [];
-
+  let leftArr = [];
+  let rightArr = [];
   for (let i = 1; i < arr.length; i += 1) {
     if (arr[i] < pivot) {
-      leftArr.push(arr[i]);
+      leftArr[leftArr.length] = arr[i];
     } else {
-      rightArr.push(arr[i]);
+      rightArr[rightArr.length] = arr[i];
     }
   }
-  return [sortByAsc(leftArr).concat(pivot, sortByAsc(rightArr))];
+  leftArr = sortByAsc(leftArr);
+  rightArr = sortByAsc(rightArr);
+  const result = [...leftArr, pivot, ...rightArr];
+  for (let i = 0; i < result.length; i += 1) {
+    array[i] = result[i];
+  }
+  return array;
 }
 
 /**
